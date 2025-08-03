@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Operator IPSI</title>
+  <style>
+    body { font-family: Arial; padding: 20px; text-align: center; background: #eee; }
+    input, select, textarea {
+      width: 90%;
+      max-width: 400px;
+      margin: 10px auto;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 10px;
+      background: #007166;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Panel Operator IPSI</h1>
+
+  <input type="text" id="perguruanMerah" placeholder="Perguruan Merah" />
+  <input type="text" id="namaMerah" placeholder="Nama Pesilat Merah" />
+  
+  <input type="text" id="perguruanBiru" placeholder="Perguruan Biru" />
+  <input type="text" id="namaBiru" placeholder="Nama Pesilat Biru" />
+  
+  <select id="ronde">
+    <option value="1">Ronde 1</option>
+    <option value="2">Ronde 2</option>
+    <option value="3">Ronde 3</option>
+  </select>
+
+  <textarea id="marquee" rows="3" placeholder="Teks Berjalan (Marquee)"></textarea>
+
+  <br>
+  <button onclick="setData()">Terapkan ke Live Score</button>
+
+  <script>
+    function setData() {
+      localStorage.setItem('nama_merah', document.getElementById('namaMerah').value);
+      localStorage.setItem('nama_biru', document.getElementById('namaBiru').value);
+      localStorage.setItem('perguruan_merah', document.getElementById('perguruanMerah').value);
+      localStorage.setItem('perguruan_biru', document.getElementById('perguruanBiru').value);
+      localStorage.setItem('ronde', document.getElementById('ronde').value);
+      localStorage.setItem('marquee', document.getElementById('marquee').value);
+      alert('Data berhasil diterapkan ke Live Score!');
+    }
+  </script>
+</body>
+</html>
