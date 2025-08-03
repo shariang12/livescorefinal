@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Score IPSI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial Black, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+    .marquee {
+      background: #111;
+      color: #0f0;
+      padding: 12px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .scoreboard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: calc(100vh - 100px);
+      padding: 0 20px;
+    }
+    .corner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .merah { background: red; }
+    .biru  { background: blue; }
+    .perguruan {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .nama {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    .skor {
+      font-size: 120px;
+      font-weight: bold;
+    }
+    .ronde-box {
+      width: 200px;
+      height: 200px;
+      background: #fff;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 32px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee">
+    <marquee behavior="scroll" direction="left" id="teksBerjalan">...</marquee>
+  </div>
+
+  <div class="scoreboard">
+    <div class="corner merah">
+      <div class="perguruan" id="perguruanMerah">PERGURUAN MERAH</div>
+      <div class="nama" id="namaMerah">MERAH</div>
+      <div class="skor" id="skorMerah">0</div>
+    </div>
+
+    <div class="ronde-box">
+      RONDE<br><span id="ronde">1</span>
+    </div>
+
+    <div class="corner biru">
+      <div class="perguruan" id="perguruanBiru">PERGURUAN BIRU</div>
+      <div class="nama" id="namaBiru">BIRU</div>
+      <div class="skor" id="skorBiru">0</div>
+    </div>
+  </div>
+
+  <script>
+    function update() {
+      document.getElementById('skorMerah').innerText = localStorage.getItem('skor_merah') || 0;
+      document.getElementById('skorBiru').innerText = localStorage.getItem('skor_biru') || 0;
+      document.getElementById('namaMerah').innerText = localStorage.getItem('nama_merah')?.toUpperCase() || 'MERAH';
+      document.getElementById('namaBiru').innerText = localStorage.getItem('nama_biru')?.toUpperCase() || 'BIRU';
+      document.getElementById('perguruanMerah').innerText = localStorage.getItem('perguruan_merah')?.toUpperCase() || '';
+      document.getElementById('perguruanBiru').innerText = localStorage.getItem('perguruan_biru')?.toUpperCase() || '';
+      document.getElementById('ronde').innerText = localStorage.getItem('ronde') || '1';
+      document.getElementById('teksBerjalan').innerText = localStorage.getItem('marquee') || 'Kejurda IPSI Situbondo 2025';
+    }
+    setInterval(update, 300);
+  </script>
+
+</body>
+</html>
