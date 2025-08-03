@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Juri</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; text-align: center; padding: 20px; }
+    button {
+      font-size: 24px;
+      margin: 10px;
+      padding: 20px;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      width: 100px;
+    }
+    .btn-merah { background: red; }
+    .btn-biru  { background: blue; }
+    .btn-reset { background: #333; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Panel Juri IPSI</h1>
+
+  <h2>Merah</h2>
+  <button class="btn-merah" onclick="tambah('merah',1)">+1</button>
+  <button class="btn-merah" onclick="tambah('merah',2)">+2</button>
+  <button class="btn-merah" onclick="tambah('merah',3)">+3</button>
+
+  <h2>Biru</h2>
+  <button class="btn-biru" onclick="tambah('biru',1)">+1</button>
+  <button class="btn-biru" onclick="tambah('biru',2)">+2</button>
+  <button class="btn-biru" onclick="tambah('biru',3)">+3</button>
+
+  <br><br>
+  <button class="btn-reset" onclick="reset()">🔄 Reset</button>
+
+  <script>
+    function tambah(warna, nilai) {
+      let key = 'skor_' + warna;
+      let skor = parseInt(localStorage.getItem(key)) || 0;
+      localStorage.setItem(key, skor + nilai);
+    }
+
+    function reset() {
+      localStorage.setItem('skor_merah', 0);
+      localStorage.setItem('skor_biru', 0);
+    }
+  </script>
+</body>
+</html>
